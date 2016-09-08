@@ -33,7 +33,6 @@
 		</Compiler>
 		<Unit filename="funciones.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="funciones.h">
 			<Option target="&lt;{~None~}&gt;" />
