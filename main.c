@@ -34,7 +34,9 @@ int main()
                 num2=0;
                 break;
             case 5:
+                system("cls");
                 num2 = validaciondivision(num2);
+                system("cls");
                 printf("El cociente entre %f y %f es :\n%f\n",num1,num2,divisionNumero(num1,num2));
                 num1=0;
                 num2=0;
