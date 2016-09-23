@@ -16,3 +16,20 @@
 	<conio.h>
 	"funciones.h"
 
+1474517864 source:c:\users\es\desktop\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"funciones.h"
+
+1474654111 c:\users\es\desktop\tp2\funciones.h
+
+1474654083 source:c:\users\es\desktop\tp2\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"funciones.h"
+
