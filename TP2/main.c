@@ -16,8 +16,8 @@ int main()
     EPersona auxiliarPersona;
     inicializaArrayPersonas(personas, CANT,-1);
     int indiceEspacioLibre;
-    int posicion;
-    char confirmacion;
+    int posicion,flag1=0,flag2=0,flag3=0,flag4=0;
+    char confirmacion, respuesta1, respuesta2,respuesta3,respuesta4;
     char auxiliarEdadArray[256];
     char auxiliarNombre[256];
     char auxiliarDniArray[256];
@@ -39,42 +39,95 @@ int main()
                 }
                 system("cls");
                 getString("Ingrese su nombre por favor:\n",auxiliarNombre);
-                if(!validarLetras(auxiliarNombre,49))
+                while(!validarLetras(auxiliarNombre,49))
                 {
                     system("cls");
-                    printf("Para ingresar el nombre solo se aceptan letras y/o espacios.\n");
+                    printf("Para ingresar el nombre solo se aceptan letras y/o espacios.\nAdemas debe tener menos de 49 caracteres.\n");
+                    printf("Desea volver a ingresar el nombre?\nPresione la tecla 's'. Sino quiere presione cualquier otra tecla\n");
+                    respuesta1=getche();
+                    if(respuesta1=='s')
+                    {
+                        system("cls");
+                        getString("Ingrese su nombre por favor:\n",auxiliarNombre);
+                    }
+                    else
+                    {
+                        flag1=1;
+                        break;
+                    }
+                }
+                if(flag1)
+                {
+                    printf("\n");
                     break;
                 }
                 getString("Ingrese su edad por favor:\n",auxiliarEdadArray);
-                if(!validarNumero(auxiliarEdadArray,4))
+                while((!validarNumero(auxiliarEdadArray,4))||(!validarEntero(atoi(auxiliarEdadArray),0,125)))
                 {
                     system("cls");
-                    printf("Para ingresar la edad solo se aceptan numeros.\n");
+                    printf("Para ingresar la edad solo se aceptan numeros desde 0 hasta 125.\n");
+                    printf("Desea volver a ingresarle la edad?\nPresione 's' por si. Cualquier otra tecla para salir\n");
+                    respuesta2=getche();
+                    if(respuesta2=='s')
+                    {
+                        system("cls");
+                        getString("Ingrese su edad por favor:\n",auxiliarEdadArray);
+                    }
+                    else
+                    {
+                        flag2=1;
+                        break;
+                    }
+                }
+                if(flag2)
+                {
+                    printf("\n");
                     break;
                 }
                 auxiliarEdad=atoi(auxiliarEdadArray);/**-LE IMPRIMO EL NUMERO DEL ARRAY AUXILIARNUMERO CONVERTIDO EN ENTERO AL ENTERO AUXILIAREDAD-*/
-                if(!validarEntero(auxiliarEdad,0,125))
-                {
-                    system("cls");
-                    printf("Edad NO valida. No puede ser menor a 0 o mayor a 125.\n");
-                    break;
-                }
                 getString("Ingrese su DNI por favor:\n",auxiliarDniArray);
-                if(!validarNumero(auxiliarDniArray,11))
+                while((!validarNumero(auxiliarDniArray,11))||(buscarPorDni(personas,atoi(auxiliarDniArray),CANT)!=-1))
                 {
-                    system("cls");
-                    printf("Para ingresar el DNI solo se aceptan numeros.\n");
+                    if(!validarNumero(auxiliarDniArray,11))
+                    {
+                        system("cls");
+                        printf("Para ingresar el DNI solo se aceptan numeros.\nPresione 's' para reingresar DNI.\nCualquier otra tecla para salir:\n");
+                        respuesta3=getche();
+                        if(respuesta3=='s')
+                        {
+                            system("cls");
+                            getString("Ingrese su DNI por favor:\n",auxiliarDniArray);
+                        }
+                        else
+                        {
+                            flag3=1;
+                            break;
+                        }
+                    }
+                    if(buscarPorDni(personas,atoi(auxiliarDniArray),CANT)!=-1)
+                    {
+                        system("cls");
+                        printf("El DNI ingresado ya existe.\nPresione 's' para reingresar, otra tecla para volver al menu\n");
+                        respuesta4=getche();
+                        if(respuesta4=='s')
+                        {
+                            system("cls");
+                            getString("Ingrese su DNI por favor:\n",auxiliarDniArray);
+                        }
+                        else
+                        {
+                            flag4=1;
+                            break;
+                        }
+                    }
+                }
+                if(flag3||flag4)
+                {
+                    printf("\n");
                     break;
                 }
                 system("cls");
                 auxiliarDni=atoi(auxiliarDniArray);/**-LE IMPRIMO EL NUMERO DEL ARRAYAUXILIARDNI CONVERTIDO EN ENTERO AL ENTERO AUXILIARDNI-*/
-                posicion=buscarPorDni(personas,auxiliarDni,CANT);
-                if(posicion!=-1)
-                {
-                    system("cls");
-                    printf("El DNI ingresado ya existe\n");
-                    break;
-                }
                 personas[indiceEspacioLibre].dni=auxiliarDni;/**-LE IMPRIMO AL CAMPO DNI DEL ARRAY PERSONAS[OCUPADO] EL ENTERO AUXILIARDNI -*/
                 personas[indiceEspacioLibre].edad=auxiliarEdad;/**-LE IMPRIMO AL CAMPO EDAD DEL ARRAY PERSONAS[OCUPADO] EL ENTERO AUXILIAREDAD -*/
                 strcpy(personas[indiceEspacioLibre].nombre,auxiliarNombre);/**-LE IMPRIMO AL CAMPO NOMBRE DEL ARRAY PERSONAS[OCUPADO] EL ARRAY AUXILIARNOMBRE -*/

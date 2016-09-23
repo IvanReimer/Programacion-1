@@ -181,3 +181,6 @@ int buscarPorDni(EPersona lista[],int dni, int cantidadLista)
     }
 return retorno;
 }
+
+
+

@@ -33,3 +33,20 @@
 	<conio.h>
 	"funciones.h"
 
+1474670966 source:c:\users\es\desktop\tp2 - copia\funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+	"funciones.h"
+
+1474654111 c:\users\es\desktop\tp2 - copia\funciones.h
+
+1474670967 source:c:\users\es\desktop\tp2 - copia\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<conio.h>
+	"funciones.h"
+
